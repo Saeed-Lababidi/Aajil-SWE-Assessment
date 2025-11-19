@@ -11,6 +11,7 @@ Because the assignment explicitly requires Django + DRF for the backend, my firs
 
 To speed up this learning process, I used a combination of:
 - AI tools (e.g. ChatGPT) to explain concepts in simpler terms and generate small code snippets
+- Search through the documentation on https://docs.djangoproject.com/en/5.2/.
 - Trial and error by running the server, checking errors, and fixing them
 
 Whenever I used AI-generated code, I:
