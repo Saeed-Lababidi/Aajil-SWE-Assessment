@@ -1,5 +1,19 @@
 # DECISIONS – Subscription Management Dashboard
 
+## 0. Planning and organizing work
+
+The project includes:
+- CRUD operations
+- Analytics Dashboard
+- Scheduling for next renewal
+- A User-centric UI
+- Cost Analysis
+
+Proposed Architecture:
+- Django Backend
+- DRF for API
+- React frontend
+
 ## 1. Initial Context and Learning Curve
 
 To be honest I had not worked with Django, Django REST Framework (DRF), or serializers before. So I had to learn on the go.
@@ -32,6 +46,7 @@ Since this was my first time using Django, I had to learn the basic structure of
 - I also registered the `Subscription` model in Django’s admin site so I could easily create and inspect subscription records during development.
 
 Understanding this structure was my first step before adding Django REST Framework and building the actual API.
+I also loved the fact that the DRF has built in serializers and validation.
 
 ### Database: SQLite
 
@@ -43,9 +58,12 @@ I chose the default SQLite database because:
 ### Frontend: React
 
 For the frontend, I chose React because:
-- The assignment needs charts, lists, and filters, which React can handle with bootstrap components.
+- The assignment needs charts, lists, and filters, which React can handle with reusable bootstrap components.
 - Separates frontend from backend, which matches the idea of a REST API backend.
 I considered using Django templates directly, but I have more experience with React.
+The way I will be coding with react is going to be by initially using AI to generate extremely atomic components from specific libraries like shadcn
+for reusability and then building on top based on requirements. I usually wrap components to prevent breaking changes in my code but seeing as it is
+a low scale project, using unwrapped third party components is acceptable.
 
 ## 3. Project Structure
 
