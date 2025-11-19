@@ -60,7 +60,9 @@ I chose the default SQLite database because:
 For the frontend, I chose React because:
 - The assignment needs charts, lists, and filters, which React can handle with reusable bootstrap components.
 - Separates frontend from backend, which matches the idea of a REST API backend.
+  
 I considered using Django templates directly, but I have more experience with React.
+
 The way I will be coding with react is going to be by initially using AI to generate extremely atomic components from specific libraries like shadcn
 for reusability and then building on top based on requirements. I usually wrap components to prevent breaking changes in my code but seeing as it is
 a low scale project, using unwrapped third party components is acceptable.
