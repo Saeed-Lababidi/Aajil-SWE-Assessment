@@ -301,6 +301,15 @@ FakesAssemblies/
 .ntvs_analysis.dat
 node_modules/
 
+# package-lock.json
+package-lock.json
+
+# aajil-subscriptions/seed_subscriptions.py
+aajil-subscriptions/seed_subscriptions.py  
+
+# aajil-subscriptions/venv
+aajil-subscriptions/venv/
+
 # Visual Studio 6 build log
 *.plg
 

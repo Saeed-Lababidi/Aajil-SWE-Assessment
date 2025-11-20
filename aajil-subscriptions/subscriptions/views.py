@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from django.utils import timezone
-from django.db.models import Sum, F, Case, When
+from django.db.models import Sum, F, Case, When, DecimalField
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -49,6 +49,7 @@ class SubscriptionViewSet(viewsets.ModelViewSet):
                 When(billing_cycle="monthly", then=F("cost")),
                 When(billing_cycle="yearly", then=F("cost") / 12),
                 default=0,
+                output_field=DecimalField(max_digits=10, decimal_places=2),
             )
         )
         total_monthly = monthly_annotated.aggregate(total=Sum("monthly_cost"))["total"] or 0
@@ -59,6 +60,7 @@ class SubscriptionViewSet(viewsets.ModelViewSet):
                 When(billing_cycle="yearly", then=F("cost")),
                 When(billing_cycle="monthly", then=F("cost") * 12),
                 default=0,
+                output_field=DecimalField(max_digits=10, decimal_places=2),
             )
         )
         total_yearly = yearly_annotated.aggregate(total=Sum("yearly_cost"))["total"] or 0
@@ -69,9 +71,13 @@ class SubscriptionViewSet(viewsets.ModelViewSet):
 
         upcoming_serialized = SubscriptionSerializer(upcoming, many=True).data
 
+        # Count of active subscriptions
+        active_count = qs.count()
+
         data = {
             "total_monthly_cost": total_monthly,
             "total_yearly_cost": total_yearly,
+            "active_subscriptions_count": active_count,
             "upcoming_renewals_count": upcoming_count,
             "upcoming_renewals": upcoming_serialized,
         }
